@@ -1,0 +1,81 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.DS_Store
+
+# Kotlin
+*.class
+*.log
+*.ctxt
+.kotlin/
+
+# Android
+local.properties
+*.apk
+*.aab
+*.ap_
+*.dex
+/captures
+.externalNativeBuild
+.cxx
+
+# iOS
+iosApp/Pods/
+iosApp/.symlinks/
+iosApp/Flutter/
+iosApp/*.xcworkspace
+!iosApp/*.xcworkspace/contents.xcworkspacedata
+iosApp/build/
+DerivedData/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+*.xcuserstate
+*.moved-aside
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+xcuserdata/
+
+# Secrets (never commit)
+*.jks
+*.keystore
+google-services.json
+GoogleService-Info.plist
+.env
+secrets.properties
+
+# Generated
+/shared/build/
+/androidApp/build/
+/iosApp/build/
+
+# Misc
+*.log
+*.tmp
+*.bak
+Thumbs.db
+
+# Claude Code
+.claude/
+
+# Documentation (local only)
+docs/
+
+# Screenshots (local only)
+*.png
+*.jpg
+*.jpeg
