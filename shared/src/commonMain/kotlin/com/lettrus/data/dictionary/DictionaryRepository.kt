@@ -11,7 +11,6 @@ import org.jetbrains.compose.resources.ExperimentalResourceApi
 
 enum class Difficulty {
     EASY,
-    MEDIUM,
     HARD
 }
 
