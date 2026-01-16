@@ -39,6 +39,33 @@ lettrus/
 └── web/             # Site web (lettrus.com)
 ```
 
+## Développement
+
+### Prérequis
+
+- JDK 17+
+- Android Studio ou IntelliJ IDEA
+
+### Installation des hooks Git
+
+```bash
+# Installer le hook pre-push
+cp scripts/validator.sh .git/hooks/pre-push
+chmod +x .git/hooks/pre-push
+```
+
+Le hook exécute automatiquement les tests avant chaque push.
+
+### Build
+
+```bash
+# Android
+./gradlew :androidApp:assembleDebug
+
+# Tests
+./gradlew :shared:allTests
+```
+
 ## Licence
 
 AGPL-3.0 - Voir [LICENSE](LICENSE)
