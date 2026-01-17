@@ -81,3 +81,6 @@ docs/
 *.png
 *.jpg
 *.jpeg
+
+# Lexique.org source file (too large to commit)
+lexique383.tsv
