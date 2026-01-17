@@ -8,6 +8,7 @@ object LettrusColors {
     val Background = Color(0xFFFFE5D9)      // Corail chaud / Pêche
     val Surface = Color(0xFFFFF8F0)         // Blanc cassé / Crème
     val SurfaceVariant = Color(0xFFFFF0E8)  // Crème plus foncé
+    val ActiveCell = Color(0xFFE8DDD5)      // Case active - fond plus sombre
 
     // Feedback lettres
     val Correct = Color(0xFF4ECDC4)         // Vert menthe - bien placée

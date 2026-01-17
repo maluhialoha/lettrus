@@ -54,7 +54,7 @@ class GameViewModel(
     fun startGame(
         letterCount: Int = 7,
         difficulty: Difficulty = Difficulty.EASY,
-        timerEnabled: Boolean = true
+        timerEnabled: Boolean = false  // TODO: remettre à true quand tests terminés
     ) {
         val game = gameEngine.startGame(letterCount, difficulty, timerEnabled)
         _uiState.value = _uiState.value.copy(

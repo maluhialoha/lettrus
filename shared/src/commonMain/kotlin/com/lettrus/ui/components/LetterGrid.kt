@@ -19,7 +19,7 @@ fun LetterGrid(
     game: Game,
     modifier: Modifier = Modifier,
     cellSize: Dp = 44.dp,
-    cellSpacing: Dp = 4.dp
+    cellSpacing: Dp = 2.dp  // Espacement réduit
 ) {
     Column(
         modifier = modifier,
@@ -99,12 +99,16 @@ private fun getCellData(
             val inputLetter = game.currentInput.getOrNull(colIndex)
             val prefilledLetter = correctLetters[colIndex]
 
+            // La case active est UNIQUEMENT la prochaine case vide à remplir
+            val nextEmptyIndex = game.currentInput.length
+            val isThisCellActive = colIndex == nextEmptyIndex && nextEmptyIndex < game.letterCount
+
             when {
                 // Lettre saisie par le joueur
                 inputLetter != null -> CellData(
                     letter = inputLetter,
                     state = LetterState.EMPTY,
-                    isActive = colIndex == game.currentInput.length - 1
+                    isActive = false  // Les cases remplies ne sont jamais actives
                 )
                 // Lettre pré-remplie (correcte de l'essai précédent)
                 prefilledLetter != null -> CellData(
@@ -116,7 +120,7 @@ private fun getCellData(
                 else -> CellData(
                     letter = null,
                     state = LetterState.EMPTY,
-                    isActive = colIndex == game.currentInput.length
+                    isActive = isThisCellActive
                 )
             }
         }

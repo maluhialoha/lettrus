@@ -29,11 +29,12 @@ fun LetterCell(
     size: Dp = 44.dp,
     modifier: Modifier = Modifier
 ) {
+    // Case active = fond plus sombre, PAS de bordure rouge
     val backgroundColor = when (state) {
         LetterState.CORRECT -> LettrusColors.Correct
         LetterState.MISPLACED -> LettrusColors.Misplaced
         LetterState.ABSENT -> LettrusColors.Absent
-        LetterState.EMPTY -> if (isActive) LettrusColors.SurfaceVariant else LettrusColors.Surface
+        LetterState.EMPTY -> if (isActive) LettrusColors.ActiveCell else LettrusColors.Surface
     }
 
     val textColor = when (state) {
@@ -43,31 +44,26 @@ fun LetterCell(
         LetterState.EMPTY -> LettrusColors.OnSurface
     }
 
-    // Forme : carré arrondi pour CORRECT, cercle pour MISPLACED, carré pour le reste
+    // Forme : carré arrondi pour CORRECT, cercle pour MISPLACED, carré arrondi pour le reste
     val shape: Shape = when (state) {
-        LetterState.CORRECT -> RoundedCornerShape(8.dp)
+        LetterState.CORRECT -> RoundedCornerShape(10.dp)
         LetterState.MISPLACED -> CircleShape
-        else -> RoundedCornerShape(4.dp)
+        else -> RoundedCornerShape(10.dp)
     }
 
-    val borderColor = when {
-        isActive -> LettrusColors.Primary
-        state == LetterState.EMPTY -> LettrusColors.Divider
-        else -> Color.Transparent
+    // Ombre sur toutes les cases SAUF la case active (elle ressort par contraste)
+    val elevation = when {
+        isActive -> 0.dp
+        state != LetterState.EMPTY -> 3.dp
+        else -> 2.dp
     }
-
-    val borderWidth = if (isActive) 2.dp else 1.dp
 
     Box(
         modifier = modifier
             .size(size)
-            .shadow(
-                elevation = if (state != LetterState.EMPTY) 2.dp else 0.dp,
-                shape = shape
-            )
+            .shadow(elevation = elevation, shape = shape)
             .clip(shape)
-            .background(backgroundColor)
-            .border(borderWidth, borderColor, shape),
+            .background(backgroundColor),
         contentAlignment = Alignment.Center
     ) {
         letter?.let {

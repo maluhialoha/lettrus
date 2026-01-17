@@ -6,10 +6,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
@@ -143,7 +146,8 @@ private fun GameContent(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .windowInsetsPadding(WindowInsets.safeDrawing)  // Safe area (notch, etc.)
+            .padding(horizontal = 16.dp, vertical = 8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         // Header: Logo + Score + Timer
@@ -155,22 +159,24 @@ private fun GameContent(
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // Grid
+        // Grid avec espacement réduit
         LetterGrid(
             game = game,
             cellSize = 44.dp,
-            cellSpacing = 4.dp
+            cellSpacing = 2.dp
         )
 
         Spacer(modifier = Modifier.weight(1f))
 
-        // Keyboard
+        // Keyboard avec marges
         Keyboard(
             letterStates = calculateKeyboardStates(game.attempts),
             onLetterClick = onLetterInput,
             onBackspaceClick = onBackspace,
             onEnterClick = onSubmit,
-            modifier = Modifier.padding(bottom = 16.dp)
+            modifier = Modifier
+                .padding(horizontal = 4.dp)
+                .padding(bottom = 24.dp)
         )
     }
 }
