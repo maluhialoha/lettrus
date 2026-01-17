@@ -10,18 +10,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.lettrus.ui.theme.LettrusColors
+import com.lettrus.ui.theme.LettrusTheme
 
 @Composable
 fun App() {
-    MaterialTheme {
+    LettrusTheme {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Color(0xFFFFE5D9)), // Studio Jour background
+                .background(MaterialTheme.colorScheme.background),
             contentAlignment = Alignment.Center
         ) {
             Column(
@@ -29,14 +28,13 @@ fun App() {
             ) {
                 Text(
                     text = "LETTRUS",
-                    fontSize = 48.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = Color(0xFFFF6B6B) // Accent color
+                    style = MaterialTheme.typography.displayLarge,
+                    color = LettrusColors.Primary
                 )
                 Text(
                     text = "Jeu de lettres",
-                    fontSize = 18.sp,
-                    color = Color(0xFF333333),
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onBackground,
                     modifier = Modifier.padding(top = 8.dp)
                 )
             }
